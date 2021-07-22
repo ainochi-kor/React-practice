@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Example</title>  
+</head>
+<body>
+  <div id="root"></div>
+  
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js" integrity="sha512-kp7YHLxuJDJcOzStgd6vtpxr4ZU9kjn77e6dBsivSz+pUuAuMlE2UTdKB7jjsWT84qbS8kdCWHPETnP/ctrFsA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="text/babel">
+    
+  //  class App extends React.Component {
+
+  //   state = {
+  //     age: 39,
+  //   }
+
+  //   constructor(props) {
+  //     super (props);
+
+  //     console.log("constructor", props);
+  //   }
+
+
+  //   render() {
+  //     console.log('render');
+  //     return (
+  //       <div>
+  //         <h2>
+  //             Hello {this.props.name} - {this.state.age}
+  //         </h2>
+  //       </div>
+  //     )
+  //   }
+
+    
+  //   static getDerivedStateFromProps(nextProps, prevProps) {
+  //     console.log('getDerivedStateFromProps', nextProps, prevProps);
+      
+  //     // 새로운 props가 들어오면 실행한다.
+  //     return {
+  //       age: 390,
+  //     };
+  //   }
+
+  //   componentDidMount() {
+  //     console.log("componentDidMount")
+
+  //     setInterval(() => {
+  //       console.log("setInterval");
+  //       this.setState(state => ({
+  //         ...state, 
+  //         age: state.age + 1
+  //       }))
+  //     }, 1000);
+  //   }
+
+  //   /*
+  //   componentWillReceiveProps(nextProps) {
+  //     console.log("componentWillReceiveProps", nextProps);
+  //   }
+  //   */
+
+  //   shouldComponentUpdate(nextProps, nextState) {
+  //     console.log("shouldComponentUpdate", nextProps, nextState);
+
+  //     return false; // 렌더가 됨 false 시 렌더가 안됨.
+
+  //   }
+
+  //   /*
+  //   componentWillUpdate(nextProps, nextState) {
+  //     console.log("componentWillUpdate", nextProps, nextState)
+  //   }
+  //   */
+
+  //   componentDidUpdate(prevProps, prevState) {
+  //     console.log("componentDidUpdate", prevProps, prevState)
+  //   }
+
+  // }
+
+    class App extends React.Component {
+      state = {
+        hasError: false
+      };
+      render() {
+        if(this.state.hasError) {
+          return <div>예상치 못한 에러가 발생했다.</div>
+        }
+        return <WebService />;
+      }
+
+      
+      componentDidCatch(error, info) {
+        this.setState({
+          hasError: true
+        })
+      }
+    }
+   
+    ReactDOM.render(<App name="Mark" />, document.querySelector('#root'));
+  </script>
+  
+</body>
+</html>
